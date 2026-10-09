@@ -1,0 +1,258 @@
+/* Aluno(a): NOEMI SANTOS - Jogo da Cobrinha */
+
+:root {
+  /* Paleta roxa */
+  --fundo: #10002B;
+  --background: linear-gradient(135deg, #10002B 0%, #3C096C 50%, #5A189A 100%);
+  --painel: #240046;
+  --tabuleiro: #10002B;
+
+  --cobra: #C77DFF;
+  --texto: #FFFFFF;
+  --destaque: #9D4EDD;
+
+  /* Tons complementares da mesma paleta */
+  --roxo-escuro: #3C096C;
+  --roxo-medio: #5A189A;
+  --roxo-vibrante: #7B2CBF;
+  --lilas: #C77DFF;
+  --lavanda: #E0AAFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px 12px;
+  background: var(--background);
+  color: var(--texto);
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+/* Painéis principais */
+.jogo,
+.ranking {
+  background: var(--painel);
+  border: 1px solid var(--roxo-vibrante);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 8px 28px rgba(16, 0, 43, 0.35);
+}
+
+.jogo {
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
+}
+
+.ranking {
+  width: 100%;
+  max-width: 260px;
+}
+
+/* Títulos */
+h1 {
+  margin: 0 0 8px;
+  color: var(--lavanda);
+  font-size: 1.8rem;
+}
+
+h2 {
+  margin: 0 0 12px;
+  color: var(--lilas);
+}
+
+.instrucao {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0 0 14px;
+  color: var(--texto);
+}
+
+/* Controles */
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+input {
+  padding: 8px 10px;
+  border: 2px solid var(--destaque);
+  border-radius: 8px;
+  background: var(--tabuleiro);
+  color: var(--texto);
+  font-size: 1rem;
+  width: 160px;
+  min-width: 0;
+}
+
+input::placeholder {
+  color: var(--lavanda);
+}
+
+/* Botões */
+button {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--lilas);
+  color: #10002B;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.2s;
+}
+
+button:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--lavanda);
+  outline-offset: 3px;
+}
+
+.secundario {
+  background: var(--painel);
+  color: var(--lavanda);
+  border: 1px solid var(--destaque);
+  margin-top: 12px;
+  font-size: 0.85rem;
+}
+
+.secundario:hover {
+  background: var(--roxo-escuro);
+}
+
+/* Placar */
+.placar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  color: var(--texto);
+}
+
+.placar strong,
+.placar span {
+  color: var(--lilas);
+}
+
+/* Tabuleiro */
+.tabuleiro {
+  position: relative;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  background: var(--tabuleiro);
+  border-radius: 10px;
+  border: 3px solid var(--destaque);
+  display: block;
+}
+
+/* Mensagens de início e fim de jogo */
+.mensagem {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(16, 0, 43, 0.92);
+  color: var(--texto);
+  border: 2px solid var(--roxo-vibrante);
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.mensagem.escondida {
+  display: none;
+}
+
+/* Controles direcionais */
+.direcionais {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.direcionais button {
+  padding: 12px 6px;
+  background: var(--roxo-escuro);
+  color: var(--lavanda);
+  border: 1px solid var(--destaque);
+}
+
+/* Ranking */
+.ranking ol {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.ranking li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--roxo-vibrante);
+  overflow-wrap: anywhere;
+}
+
+.ranking li span {
+  float: right;
+  color: var(--lilas);
+  font-weight: bold;
+}
+
+.vazio {
+  list-style: none;
+  margin-left: -24px;
+  opacity: 0.7;
+  color: var(--texto);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  body {
+    gap: 16px;
+    padding: 16px 10px;
+  }
+
+  .jogo,
+  .ranking {
+    padding: 14px;
+  }
+
+  .controles input {
+    flex: 1;
+    width: auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .direcionais {
+    display: none;
+  }
+}
