@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jogo da Cobrinha</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Projeto: Atividade Invertida - Jogo Web -->
+  <!-- Aluno(a): COLOQUE SEU NOME AQUI -->
+
+  <main class="jogo">
+    <h1>Jogo da Cobrinha</h1>
+    <p class="instrucao">
+      Use as <strong>setas</strong> ou <strong>W A S D</strong> para guiar a cobrinha.
+      Coma a maçã para ganhar 10 pontos. A cobrinha atravessa as paredes e sai do outro lado, mas bater em você mesmo termina o jogo.
+    </p>
+
+    <div class="controles">
+      <input type="text" id="nome" maxlength="12" placeholder="Seu nome">
+      <button id="btn-iniciar">Iniciar</button>
+    </div>
+
+    <div class="placar">
+      <span>Pontos: <strong id="pontos">0</strong></span>
+      <span>Recorde: <strong id="recorde">0</strong></span>
+    </div>
+
+    <div class="tabuleiro">
+      <canvas id="canvas" width="400" height="400"></canvas>
+      <div id="mensagem" class="mensagem">Digite seu nome e clique em Iniciar</div>
+    </div>
+
+    <!-- Botões para celular -->
+    <div class="direcionais">
+      <button data-dir="cima" aria-label="Cima">▲</button>
+      <button data-dir="esquerda" aria-label="Esquerda">◀</button>
+      <button data-dir="baixo" aria-label="Baixo">▼</button>
+      <button data-dir="direita" aria-label="Direita">▶</button>
+    </div>
+  </main>
+
+  <aside class="ranking">
+    <h2>Ranking</h2>
+    <ol id="lista-ranking"></ol>
+    <button id="btn-limpar" class="secundario">Limpar ranking</button>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
